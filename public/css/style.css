@@ -13,3 +13,28 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.suc{
+    background: blue;
+    color: white;
+    font-weight: bold;
+}
+.def{
+    background: yellow;
+    font-weight: bold;
+    color: black;
+}
+.dan{
+    background: red;
+    color: white;
+    font-weight: bold;
+}
+.res{
+    display:none;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+#myForm{
+    margin-top: 50px;
+}
+

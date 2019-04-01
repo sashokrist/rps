@@ -2,16 +2,7 @@
 
 @section('content')
     <div class="col-sm-12">
-        @if (Session::has('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if (Session::has('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+
         <div class="row">
             <div class="col-sm-12">
                 <img src="{{ asset('images/Rock.png') }}" alt="">

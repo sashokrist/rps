@@ -18,18 +18,16 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                text-shadow: 0 0 8px blue;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
@@ -39,15 +37,12 @@
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
             }
-
             .title {
                 font-size: 84px;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -57,7 +52,6 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -80,18 +74,18 @@
             @endif
 
             <div class="content">
+                <div class="col-sm-12">
+                    <img src="{{ asset('images/Rock.png') }}" alt="">
+                    <img src="{{ asset('images/Paper.png') }}" alt="">
+                    <img src="{{ asset('images/Scissor.png') }}" alt="">
+                </div>
                 <div class="title m-b-md">
-                    Laravel
+                   Welcome To Rock, Paper Scissors!
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('register') }}">Register</a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Game;
 use App\Profile;
-use Session;
+use App\User;
 
 class GameController extends Controller
 {
@@ -38,12 +38,21 @@ class GameController extends Controller
             $items == 'paper' && $computer == 'rock' ||
             $items == 'rock' && $computer == 'scissors') :
             $game->result = 'Win';
+            $game->count = 1;
             $game->save();
-            Session::flash('success', 'You WIN.');
-            $items = 'Win';
+            $itemsR = 'Win';
             $profile = new Profile();
             $profile->user_id = auth()->user()->id;
             $profile->name = auth()->user()->name;
+
+            $username = auth()->user()->id;
+            $user = User::where('id', $username)->firstOrFail();
+            foreach ($user->games as $game){
+                $gameId = $game->id;
+            }
+            $profile->game_id = $gameId;
+            $profile->user_choice = $items;
+            $profile->computer = $computer;
             $profile->result = 'Win';
             $profile->save();
         endif;
@@ -52,36 +61,51 @@ class GameController extends Controller
             $computer == 'paper' && $items == 'rock' ||
             $computer == 'rock' && $items == 'scissors') :
             $game->result = 'Lost';
+            $game->count = 1;
             $game->save();
-            Session::flash('success', 'You LOST.');
-            $items = 'Lost';
+            $itemsR = 'Lost';
             $profile = new Profile();
             $profile->user_id = auth()->user()->id;
             $profile->name = auth()->user()->name;
+
+            $username = auth()->user()->id;
+            $user = User::where('id', $username)->firstOrFail();
+            foreach ($user->games as $game){
+                $gameId = $game->id;
+            }
+            $profile->game_id = $gameId;
+            $profile->user_choice = $items;
+            $profile->computer = $computer;
             $profile->result = 'Lost';
             $profile->save();
         endif;
 
         if ($items == $computer) :
            $game->result = 'Tie';
+            $game->count = 1;
             $game->save();
-            Session::flash('success', 'TIE');
-            $items = 'Tie';
+            $itemsR = 'Tie';
             $profile = new Profile();
             $profile->user_id = auth()->user()->id;
             $profile->name = auth()->user()->name;
+
+            $username = auth()->user()->id;
+            $user = User::where('id', $username)->firstOrFail();
+            foreach ($user->games as $game){
+                $gameId = $game->id;
+            }
+            $profile->game_id = $gameId;
+            $profile->user_choice = $items;
+            $profile->computer = $computer;
             $profile->result = 'Tie';
             $profile->save();
         endif;
-        // }
 
-        //$game->save();
         if ($request->isXmlHttpRequest()) {
             return response()->json([
-                'result' => $items
+                'result' => $itemsR
             ]);
         }
-        //return view('welcome');
     }
 
     public function show($id)
