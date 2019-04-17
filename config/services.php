@@ -42,6 +42,13 @@ return [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
+
+        'facebook' => [
+            'client_id' => '647815795656966',
+            'client_secret' => '4e1e9b73928c67401e280ad4d148304e',
+            'redirect' => 'http://relationships.test/login/facebook/callback',
+        ],
+
     ],
 
 ];

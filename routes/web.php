@@ -10,17 +10,15 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::resource('game', 'GameController');
 
+    Route::get('/statistic', 'GameController@statistic');
+
     Route::get('/home', 'ProfileController@index');
 
-});
+    Route::get('/profile', 'ProfileController@profile');
 
-/*Route::get('/', function () {
-    $games = Game::all();
-    return View::make('game')->with('games', $games);
-});*/
-/*Route::get('/profile/', function (){
-    $username = auth()->user()->name;
-    $user = User::where('name', $username)->firstOrFail();
-   // dd($user);
-    return View::make('profile')->with('user', $user);
-});*/
+    Route::post('/profile', 'ProfileController@update_avatar');
+
+
+});
+Route::get('gameover', 'GameController@gameover');
+

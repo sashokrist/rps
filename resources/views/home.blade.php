@@ -3,44 +3,61 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">User Profile</div>
                 <div class="card-body">
-                    <a href="{{ url('game') }}" class="btn btn-primary btn-lg">PLAY NEW GAME</a>
+                    <a href="{{ url('welcome') }}" class="btn btn-primary btn-lg">Home</a>
+                    <a href="{{ url('game') }}" class="btn btn-primary btn-lg">New Game</a>
+                    <a href="{{ url('statistic') }}" class="btn btn-primary btn-lg">Statistic</a>
                         <h3>Welcome {{ $user->name }}, your game results</h3>
-                        <h3>User Experience: <strong>{{ $user->level->level }}</strong></h3>
-                        <h3>Roles: </h3>
-                        <ul>
-                            @foreach($user->roles as $role)
-                                <li><strong>{{ $role->name }}</strong></li>
-                            @endforeach
-                        </ul>
-                    @foreach($user->games as $game)
-                        {{ $game->id }};
-                        @endforeach
+                    <img class="rounded-circle" src="/storage/avatars/{{ $user->avatar }}" width="100px;" height="100px;" alt="Upload avatar" />
+                    <a href="profile" class="btn btn-primary">Upload image</a>
                     <table>
                         <tr>
-                            <th>Id</th>
                             <th>Game Id</th>
-                            <th>Name</th>
                             <th>Your choice</th>
                             <th>PC choice</th>
                             <th>Result</th>
+                            <th>Count</th>
                             <th>Date</th>
                         </tr>
                         <tr>
                             @foreach($rounds as $round)
-                                <td>{{ $round->user_id }}</td>
                                 <td>{{ $round->game_id }}</td>
-                                <td>{{ $round->name }}</td>
                                 <td>{{ $round->user_choice }}</td>
                                 <td>{{ $round->computer }}</td>
                                 <td>{{ $round->result }}</td>
-                                <td>{{ $round->created_at }}</td>
+                                <td>{{ $round->count }}</td>
+                                <td>{{ $round->created_at->diffForHumans() }}</td>
                         </tr>
                         @endforeach
                     </table>
+                    {{ $rounds->links() }}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h2>This game result</h2>
+                <table>
+                    <tr>
+                        <th>Game Id</th>
+                        <th>Your choice</th>
+                        <th>PC choice</th>
+                        <th>Result</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        @foreach($countRow as $roundR)
+                            <td>{{ $roundR->game_id }}</td>
+                            <td>{{ $roundR->user_choice }}</td>
+                            <td>{{ $roundR->computer }}</td>
+                            <td>{{ $roundR->result }}</td>
+                            <td>{{ $roundR->created_at->diffForHumans() }}</td>
+                    </tr>
+                    @endforeach
+                </table>
                 </div>
             </div>
         </div>
