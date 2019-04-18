@@ -6,10 +6,12 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ url('welcome') }}" class="btn btn-primary btn-lg">Home</a>
-                    <a href="{{ url('game') }}" class="btn btn-primary btn-lg">New Game</a>
-                    <a href="{{ url('statistic') }}" class="btn btn-primary btn-lg">Statistic</a>
-                        <h3>Welcome {{ $user->name }}, your game results</h3>
+                    <div class="text-center">
+                        <a href="{{ url('welcome') }}" class="btn btn-primary btn-lg">Home</a>
+                        <a href="{{ url('game') }}" class="btn btn-primary btn-lg">New Game</a>
+                        <a href="{{ url('statistic') }}" class="btn btn-primary btn-lg">Statistic</a>
+                    </div>
+                        <h2 class="row justify-content-center">Welcome {{ $user->name }}, your game results</h2>
                     <img class="rounded-circle" src="/storage/avatars/{{ $user->avatar }}" width="100px;" height="100px;" alt="Upload avatar" />
                     <a href="profile" class="btn btn-primary">Upload image</a>
                     <table>
@@ -39,7 +41,7 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                <h2>This game result</h2>
+                <h2 class="row justify-content-center">This game result</h2>
                 <table>
                     <tr>
                         <th>Game Id</th>

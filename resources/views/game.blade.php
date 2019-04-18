@@ -28,15 +28,15 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Pick item</label>
                                         </div>
-                                        <select class="custom-select" id="item">
-                                            <option selected>Choose...</option>
-                                            <option value="rock">Rock</option>
-                                            <option value="paper">Paper</option>
-                                            <option value="scissors">Scissors</option>
-                                        </select>
+                                            <select class="custom-select" id="item">
+                                                <option selected>Choose...</option>
+                                                <option value="rock">Rock</option>
+                                                <option value="paper">Paper</option>
+                                                <option value="scissors">Scissors</option>
+                                            </select>
                                     </div>
                                     <div class=" row justify-content-center">
-                                        <button class="btn btn-primary" id="ajaxSubmit">Play</button>
+                                        <button class="btn btn-primary btn-lg" id="ajaxSubmit">Play</button>
                                     </div>
                                 </form>
                             </div>
